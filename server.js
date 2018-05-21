@@ -1,13 +1,13 @@
-const express = require('express')
-const exphbs = require('express-handlebars');
-const bodyParser = require('body-parser');
+var express = require('express')
+var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
-const app = express();
+var app = express();
 
-//Serve static content for the app from the public directory in the application directory
-app.get(express.static("public"));
+//Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));

@@ -1,4 +1,4 @@
-var connection = require("./connection.js");
+var connection = require("../config/connection.js");
 
 // Object Relational Mapper (ORM)
 
@@ -7,7 +7,16 @@ var connection = require("./connection.js");
 // These help avoid SQL injection
 // https://en.wikipedia.org/wiki/SQL_injection
 
+console.log("ORM connected");
+function printQuestionMarks(num) {
+    var arr = [];
 
+    for (var i = 0; i < num; i++) {
+        arr.push("?");
+    }
+    return arr.toString();
+    
+}
 function objToSql(ob) {
     var arr = [];
 
@@ -46,6 +55,7 @@ var orm = {
         queryString += cols.toString;
         queryString += ") ";
         queryString += "VALUES (";
+        queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
         console.log(queryString);

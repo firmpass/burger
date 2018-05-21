@@ -1,8 +1,41 @@
-<p>diplay grindhouse burger logo here!(center it)</p>
-<h1>EAT GRINDHOUSE BURGER!</h1>
+<div class="container">
+<p><img class="center-block" src="/assets/img/grindhouseLogo.png"></p>
+<h1 style="text-align: center">YOU GONE EAT THIS GRINDHOUSE BURGER!</h1>
 
-<h2>Types of Burgers</h2>
+<h2 style="text-align: center">Types of Burgers</h2>
 
 <ul>
-    Display buttons of types of burgers go here!
+    {{#each burgers}}
+        {{#unless devour}}
+            {{> burger-block devour=false}}
+        {{/unless}}
+    {{/each}}       
 </ul>
+
+<h2 style="text-align: center" >Eat a Grindhouse Burger!</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#if devour}}
+            {{> burger-block devour=true}}
+        {{/if}}
+    {{/each}}       
+</ul>
+
+<h2 id="header">Add a Custom Burger</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="bn">Burger Name:</label>
+        <input type="text" id="bn" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="devour">Devour?</label><br>
+        <input type="radio" name="devour" value="1" checked>Devour!> <br>
+    </div>
+
+    <button  class="btn btn-warning" type="submit">Add Burger</button>
+</form>
+
+</div>
